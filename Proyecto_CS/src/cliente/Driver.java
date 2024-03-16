@@ -20,28 +20,39 @@ public class Driver {
          int caracter;
          InputStream entrada;
          OutputStream salida;
+        
          
-    public static void main(String[] args) {
+    public Driver(String host, int puerto){
+        try{
+            conexion = new Socket(host,puerto);   
+            System.out.println("Inicio de sesion ");         
+            entrada = conexion.getInputStream();
+            salida = conexion.getOutputStream();
+            salida.write(solicitud.getBytes());
+                 
+        }catch(Exception e){
+            System.out.println("Error: "+e.getMessage());
+        }
+    
+   }
+    
+    public String mensaje(String mensajito){
+        try{   
+       solicitud= mensajito;
+       salida.write(solicitud.getBytes());
+            
+           while((caracter = entrada.read())!=-1){
+                respuesta = respuesta + (char) caracter;
+            }
+            System.out.println("El servidor dijo: "+respuesta);
+         }catch(Exception e){
+             System.out.println("Error: "+e.getMessage());
+         }
         
-        Driver miDriver = new Driver("localhost",3000);
         
-        double result;
-        result = miDriver.suma(4.5,8);
-        System.out.println("la suma fue: "+result);
-        miDriver.Desconectar();
-        miDriver = new DriverCalc("localhost",3000);
-        
-        result = miDriver.resta(100,10000);
-        System.out.println("la resta fue: "+result);
-        
-        miDriver.Desconectar();
-        
-        
+        return respuesta;
     }
     
-    public String Conexion(usuario,contraseña,puerto){
-        
-    }
     
     public void Desconectar(){
             try{
