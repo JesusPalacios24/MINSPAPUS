@@ -18,6 +18,7 @@ public class ServRMI {
             
         }catch(RemoteException ex){
             System.out.println("Error: "+ ex.getMessage());
+            //MISPAPUS
         }
     }
         
