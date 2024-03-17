@@ -5,13 +5,9 @@
  */
 package cliente;
 
-<<<<<<< HEAD
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-=======
-import static com.oracle.jrockit.jfr.ContentType.Timestamp;
->>>>>>> 9b41c7e583af93aabe1520df74ca156a6a515678
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -90,7 +86,8 @@ public class Driver {
     
     Public String cargar(String puerto){
         //aqui va el .txt nombrado como el puerto al que se conecta el usuario
-        File archivo = new File(rutaArchivo);
+         String rutaProyecto = System.getProperty("user.dir");
+         String archivo= rutaProyecto+"\\src\\Doc\\Historial_mensajes.txt";  
             FileReader fr = new FileReader(archivo);
             BufferedReader br = new BufferedReader(fr);
             
