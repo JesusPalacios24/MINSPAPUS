@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author ANDY
+ * @author ANDYssss
  */
 public class Login extends javax.swing.JFrame {
 

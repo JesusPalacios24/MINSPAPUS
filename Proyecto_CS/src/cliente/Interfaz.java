@@ -249,7 +249,7 @@ public class Interfaz extends javax.swing.JFrame {
         
     }//GEN-LAST:event_EnviarbtnActionPerformed
 
-        // Método para escribir el mensaje en un archivo
+        // Método para escribir el mensaje en un archivo  ddd
     private void escribirMensajeEnArchivo(String mensaje) throws java.io.IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, true))) {
             writer.write(mensaje);
