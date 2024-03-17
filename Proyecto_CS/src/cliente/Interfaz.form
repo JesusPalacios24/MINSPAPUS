@@ -165,6 +165,7 @@
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="HOLA&#xa;COMO TE VA&#xa;PENDEJO&#xa;TU MADRE &#xa;WEY&#xa;IMBECIL"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -206,6 +207,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Lista  Mensaje"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MensajebtnActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

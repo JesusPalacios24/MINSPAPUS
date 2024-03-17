@@ -4,6 +4,13 @@
  */
 package cliente;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 /**
  *
  * @author ANDY
@@ -13,11 +20,42 @@ public class Interfaz extends javax.swing.JFrame {
     /**
      * Creates new form Interfaz
      */
+    String rutaProyecto = System.getProperty("user.dir");
+    String archivo= rutaProyecto+"\\src\\Doc\\Historial_mensajes.txt";
     public Interfaz() {
         initComponents();
             this.setLocationRelativeTo(this);
+            
+            try {
+              File  archivod = new File (archivo);
+              boolean existe= archivod.exists();
+              
+              
+              if (!existe) {
+            try {
+                archivod.createNewFile();
+                System.out.println("El archivo " + archivod + " ha sido creado.");
+            } catch (Exception e) {
+                System.out.println("Error al crear el archivo: " + e.getMessage());
+            }
+        }
+              
+              
+              
+              
+        } catch (Exception e) {
+                System.out.println(e.getMessage());
+        }
+         
+            
     }
 
+    
+    
+
+   
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,6 +94,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         historialMentxt.setColumns(20);
         historialMentxt.setRows(5);
+        historialMentxt.setText("HOLA\nCOMO TE VA\nPENDEJO\nTU MADRE \nWEY\nIMBECIL");
         jScrollPane2.setViewportView(historialMentxt);
 
         mensajetxt.setColumns(20);
@@ -74,6 +113,11 @@ public class Interfaz extends javax.swing.JFrame {
         participantesbtn.setText("Lista  Participantes");
 
         Mensajebtn.setText("Lista  Mensaje");
+        Mensajebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MensajebtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -157,6 +201,13 @@ public class Interfaz extends javax.swing.JFrame {
         
         System.exit(0);
     }//GEN-LAST:event_SalirbtnActionPerformed
+
+    private void MensajebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MensajebtnActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_MensajebtnActionPerformed
 
     /**
      * @param args the command line arguments
