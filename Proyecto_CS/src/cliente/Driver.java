@@ -40,7 +40,7 @@ public class Driver {
     
     public String mensaje(String mensajito,String Usuario){
         try{   
-       solicitud= Usuario+" at "+System.currentTimeMillis()+": "+mensajito;
+       solicitud= Usuario+": "+mensajito;
        salida.write(solicitud.getBytes());
             
            while((caracter = entrada.read())!=-1){
