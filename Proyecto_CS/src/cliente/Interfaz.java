@@ -10,6 +10,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,12 +24,21 @@ public class Interfaz extends javax.swing.JFrame {
     /**
      * Creates new form Interfaz
      */
+   //LOGIN 
+   
+    
+    //INTERFAZ
     String rutaProyecto = System.getProperty("user.dir");
     String archivo= rutaProyecto+"\\src\\Doc\\Historial_mensajes.txt";
     public Interfaz() {
         initComponents();
             this.setLocationRelativeTo(this);
+
             
+  
+            
+            
+         /*CREAR ARCHIVO*/   
             try {
               File  archivod = new File (archivo);
               boolean existe= archivod.exists();
@@ -38,7 +51,9 @@ public class Interfaz extends javax.swing.JFrame {
             } catch (Exception e) {
                 System.out.println("Error al crear el archivo: " + e.getMessage());
             }
-        }
+        }else{
+                    System.out.println("Ya estra creado");
+                    }
               
               
               
@@ -46,14 +61,9 @@ public class Interfaz extends javax.swing.JFrame {
         } catch (Exception e) {
                 System.out.println(e.getMessage());
         }
-         
-            
+            /*CIERRE DE CREAR ARCHIVO*/
     }
 
-    
-    
-
-   
     
     
     /**
@@ -92,9 +102,9 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(participantestxt);
 
+        historialMentxt.setEditable(false);
         historialMentxt.setColumns(20);
         historialMentxt.setRows(5);
-        historialMentxt.setText("HOLA\nCOMO TE VA\nPENDEJO\nTU MADRE \nWEY\nIMBECIL");
         jScrollPane2.setViewportView(historialMentxt);
 
         mensajetxt.setColumns(20);
@@ -102,6 +112,11 @@ public class Interfaz extends javax.swing.JFrame {
         jScrollPane3.setViewportView(mensajetxt);
 
         Enviarbtn.setText("Enviar");
+        Enviarbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnviarbtnActionPerformed(evt);
+            }
+        });
 
         Salirbtn.setText("Salir");
         Salirbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -171,10 +186,10 @@ public class Interfaz extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(18, 18, 18))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addComponent(Enviarbtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)))
+                        .addGap(26, 26, 26)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Salirbtn)
                     .addComponent(participantesbtn)
@@ -209,6 +224,41 @@ public class Interfaz extends javax.swing.JFrame {
         
     }//GEN-LAST:event_MensajebtnActionPerformed
 
+    private void EnviarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarbtnActionPerformed
+        // TODO add your handling code here:
+        boolean existe = mensajetxt.getText().trim().length()>0;
+        String texto = mensajetxt.getText();
+        
+       
+        
+        if(existe==true){
+             String mensaje = "USER: "+texto+"\n";
+                historialMentxt.append(mensaje);
+                mensajetxt.setText(null);
+            try {
+                escribirMensajeEnArchivo(mensaje);
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+                
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay nada que enviar");
+        }
+        
+        
+        
+    }//GEN-LAST:event_EnviarbtnActionPerformed
+
+        // Método para escribir el mensaje en un archivo
+    private void escribirMensajeEnArchivo(String mensaje) throws java.io.IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, true))) {
+            writer.write(mensaje);
+           
+        } catch (Exception e) {
+            // Manejar cualquier error de escritura en el archivo
+            System.out.println(e.getMessage());
+        }
+    }
     /**
      * @param args the command line arguments
      */

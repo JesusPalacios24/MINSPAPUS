@@ -18,7 +18,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     
-   public String usuario;
+   public String usuario ="Manuel";
    public int puerto;
    public String pass;
    
@@ -32,6 +32,8 @@ public class Login extends javax.swing.JFrame {
         
     }
 
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
