@@ -5,9 +5,11 @@
  */
 package cliente;
 
+import static com.oracle.jrockit.jfr.ContentType.Timestamp;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.security.Timestamp;
 
 /**
  *
@@ -36,15 +38,15 @@ public class Driver {
     
    }
     
-    public String mensaje(String mensajito){
+    public String mensaje(String mensajito,String Usuario){
         try{   
-       solicitud= mensajito;
+       solicitud= Usuario+" at "+System.currentTimeMillis()+": "+mensajito;
        salida.write(solicitud.getBytes());
             
            while((caracter = entrada.read())!=-1){
                 respuesta = respuesta + (char) caracter;
             }
-            System.out.println("El servidor dijo: "+respuesta);
+            System.out.println(respuesta);
          }catch(Exception e){
              System.out.println("Error: "+e.getMessage());
          }
