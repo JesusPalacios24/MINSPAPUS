@@ -5,12 +5,21 @@
  */
 package cliente;
 
+<<<<<<< HEAD
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+=======
+import static com.oracle.jrockit.jfr.ContentType.Timestamp;
+>>>>>>> 9b41c7e583af93aabe1520df74ca156a6a515678
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.security.Timestamp;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -39,21 +48,63 @@ public class Driver {
     
    }
     
-    public String mensaje(String mensajito){
+    public String mensaje(String mensajito,String Usuario,String puerto){
         try{   
-       solicitud= mensajito;
+       solicitud= Usuario+": "+mensajito;
        salida.write(solicitud.getBytes());
             
            while((caracter = entrada.read())!=-1){
                 respuesta = respuesta + (char) caracter;
             }
-            System.out.println("El servidor dijo: "+respuesta);
+           File archivo = new File(puerto);
+
+            // Verificar si el archivo no existe y crearlo si es necesario
+            if (!archivo.exists()) {
+                archivo.createNewFile();
+            }
+
+            // Crear FileWriter con el objeto File
+            FileWriter fw = new FileWriter(archivo.getAbsoluteFile(), true);
+            
+            // Crear BufferedWriter para escribir en el archivo
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            // Escribir texto en el archivo
+            bw.write(respuesta);
+            bw.newLine(); // Salto de línea para futuras escrituras
+
+            // Cerrar el BufferedWriter
+            bw.close();
+
+            System.out.println("¡Texto guardado en el archivo correctamente!");
+
+            System.out.println(respuesta);
          }catch(Exception e){
              System.out.println("Error: "+e.getMessage());
          }
         
         
         return respuesta;
+    }
+    
+    
+    Public String cargar(String puerto){
+        //aqui va el .txt nombrado como el puerto al que se conecta el usuario
+        File archivo = new File(rutaArchivo);
+            FileReader fr = new FileReader(archivo);
+            BufferedReader br = new BufferedReader(fr);
+            
+            String linea;
+            
+            // Leer cada línea del archivo hasta que se alcance el final
+            while ((linea = br.readLine()) != null) {
+                // Procesar la línea (en este ejemplo, simplemente imprimirla)
+                System.out.println(linea);
+            }
+            
+            // Cerrar el BufferedReader y el FileReader
+            br.close();
+            fr.close();
     }
     
     
