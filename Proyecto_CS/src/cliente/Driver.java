@@ -5,6 +5,7 @@
  */
 package cliente;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.net.Socket;
 import java.security.Timestamp;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -84,11 +86,14 @@ public class Driver {
     }
     
     
-    Public String cargar(String puerto){
+    public String cargar(String puerto){
         //aqui va el .txt nombrado como el puerto al que se conecta el usuario
          String rutaProyecto = System.getProperty("user.dir");
-         String archivo= rutaProyecto+"\\src\\Doc\\Historial_mensajes.txt";  
-            FileReader fr = new FileReader(archivo);
+         String archivo= rutaProyecto+"\\src\\Doc\\Historial_mensajes.txt"; 
+         Interfaz interfaz = new Interfaz();
+         String mens="";  
+         try{
+            FileReader fr = new FileReader(puerto);
             BufferedReader br = new BufferedReader(fr);
             
             String linea;
@@ -97,11 +102,16 @@ public class Driver {
             while ((linea = br.readLine()) != null) {
                 // Procesar la línea (en este ejemplo, simplemente imprimirla)
                 System.out.println(linea);
+                mens=mens+linea;
             }
-            
+           
             // Cerrar el BufferedReader y el FileReader
             br.close();
             fr.close();
+            }catch(Exception e){
+                System.out.println("Error: "+e.getMessage());
+            }
+            return mens;
     }
     
     

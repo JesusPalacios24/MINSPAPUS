@@ -8,13 +8,13 @@ import java.util.Scanner;
 public class ESO {
     
     public static void main(String[] args) {
-        String elmensaje="",usuario="";
+        String elmensaje="",usuario="",puerto="";
         
         
         Driver miDriver = new Driver("localhost",3000);
         
         String Mensaje;
-        Mensaje = miDriver.mensaje(usuario, elmensaje);
+        Mensaje = miDriver.mensaje(usuario, elmensaje,puerto);
        
         
         miDriver.Desconectar();       

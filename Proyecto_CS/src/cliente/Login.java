@@ -142,8 +142,7 @@ public class Login extends javax.swing.JFrame {
         
        Interfaz interfaz = new Interfaz();
        
-       interfaz.setVisible(true);
-       this.setVisible(false);
+      
        
        nombretxtx.getText();
        puertotxt.getText();
@@ -153,13 +152,11 @@ public class Login extends javax.swing.JFrame {
        puerto  = Integer.parseInt(puertotxt.getText());
        pass  = passtx.getText();
        
-       
-     
-    
-       
-       
-       
-       
+        Driver miDriver = new Driver(pass,puerto);
+            
+       interfaz.setVisible(true);
+      
+       this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

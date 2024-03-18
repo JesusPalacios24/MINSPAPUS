@@ -88,6 +88,7 @@ public class Interfaz extends javax.swing.JFrame {
         Salirbtn = new javax.swing.JButton();
         participantesbtn = new javax.swing.JButton();
         Mensajebtn = new javax.swing.JButton();
+        usuariotxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +107,7 @@ public class Interfaz extends javax.swing.JFrame {
         historialMentxt.setColumns(20);
         historialMentxt.setRows(5);
         jScrollPane2.setViewportView(historialMentxt);
+        historialMentxt.setText(miDriver.cargar(puerto));
 
         mensajetxt.setColumns(20);
         mensajetxt.setRows(5);
@@ -167,13 +169,18 @@ public class Interfaz extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(9, 9, 9)
                                 .addComponent(Salirbtn))
-                            .addComponent(Enviarbtn))))
-                .addContainerGap(39, Short.MAX_VALUE))
+                            .addComponent(Enviarbtn)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(434, 434, 434)
+                        .addComponent(usuariotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(22, 22, 22)
+                .addComponent(usuariotxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -308,5 +315,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextArea mensajetxt;
     private javax.swing.JButton participantesbtn;
     private javax.swing.JList<String> participantestxt;
+    private javax.swing.JTextField usuariotxt;
     // End of variables declaration//GEN-END:variables
 }
