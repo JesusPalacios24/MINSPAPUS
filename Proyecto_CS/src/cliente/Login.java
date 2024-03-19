@@ -57,11 +57,18 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1.setText("Direccion:");
 
+        passtx.setEditable(false);
+        passtx.setText("localhost");
+
         jLabel2.setText("Nombre:");
 
         jLabel3.setText("Puerto:");
 
-        puertootxt.setText(" ");
+        puertootxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                puertootxtActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Iniciar Sesion");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +169,10 @@ public class Login extends javax.swing.JFrame {
        interfaz.setVisible(true);      
        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void puertootxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puertootxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_puertootxtActionPerformed
 
     /**
      * @param args the command line arguments

@@ -139,6 +139,10 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        usuariootxt.setEditable(false);
+
+        puertolbl.setEditable(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -247,7 +251,8 @@ public class Interfaz extends javax.swing.JFrame {
        
         
         if(existe==true){
-             String mensaje = usuariootxt.getText()+": "+texto+"\n"+".";
+             String mensaje = usuariootxt.getText()+": "+texto
+                     +" "+"."+"\r\n";
                 historialMentxt.append(mensaje);
                 mensajetxt.setText(null);
             try {
