@@ -252,11 +252,11 @@ public class Interfaz extends javax.swing.JFrame {
         
         if(existe==true){
              String mensaje = usuariootxt.getText()+": "+texto
-                     +" "+"."+"\r\n";
+                     +"."+"\r\n";
                 historialMentxt.append(mensaje);
                 mensajetxt.setText(null);
             try {
-                escribirMensajeEnArchivo(mensaje);
+                escribirMensajeEnArchivo(mensaje);               
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }

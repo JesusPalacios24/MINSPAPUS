@@ -105,7 +105,7 @@ public class Driver {
                 if(linea.equals(".")){
                     mens=mens+"\n";
                 }else{
-                    mens=mens+linea;
+                    mens=mens+linea+"\n";
                 }
                 
             }
