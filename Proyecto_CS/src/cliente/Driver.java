@@ -89,11 +89,11 @@ public class Driver {
     public String cargar(String puerto){
         //aqui va el .txt nombrado como el puerto al que se conecta el usuario
          String rutaProyecto = System.getProperty("user.dir");
-         String archivo= rutaProyecto+"\\src\\Doc\\Historial_mensajes.txt"; 
+         String archivo= rutaProyecto+"\\src\\Doc\\"+puerto; 
          Interfaz interfaz = new Interfaz();
          String mens="";  
          try{
-            FileReader fr = new FileReader(puerto);
+            FileReader fr = new FileReader(archivo);
             BufferedReader br = new BufferedReader(fr);
             
             String linea;
@@ -102,7 +102,12 @@ public class Driver {
             while ((linea = br.readLine()) != null) {
                 // Procesar la línea (en este ejemplo, simplemente imprimirla)
                 System.out.println(linea);
-                mens=mens+linea;
+                if(linea.equals(".")){
+                    mens=mens+"\n";
+                }else{
+                    mens=mens+linea;
+                }
+                
             }
            
             // Cerrar el BufferedReader y el FileReader

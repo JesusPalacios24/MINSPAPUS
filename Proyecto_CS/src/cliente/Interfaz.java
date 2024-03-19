@@ -28,23 +28,26 @@ public class Interfaz extends javax.swing.JFrame {
    
     
     //INTERFAZ
-    String rutaProyecto = System.getProperty("user.dir");
-    String archivo= rutaProyecto+"\\src\\Doc\\Historial_mensajes.txt";
+    Login login = new Login();
+  
     public Interfaz() {
         initComponents();
             this.setLocationRelativeTo(this);
-
+  String elpuerto = puertolbl.getText();
+    String rutaProyecto = System.getProperty("user.dir");
+    String archivo= rutaProyecto+"\\src\\Doc\\"+elpuerto;
             
   
             
             
          /*CREAR ARCHIVO*/   
             try {
+                System.out.println(archivo+"    este es el directorio buscado");
               File  archivod = new File (archivo);
               boolean existe= archivod.exists();
               
               
-              if (!existe) {
+              if (existe) {
             try {
                 archivod.createNewFile();
                 System.out.println("El archivo " + archivod + " ha sido creado.");
@@ -52,7 +55,7 @@ public class Interfaz extends javax.swing.JFrame {
                 System.out.println("Error al crear el archivo: " + e.getMessage());
             }
         }else{
-                    System.out.println("Ya estra creado");
+                    System.out.println("Ya esta creado");
                     }
               
               
@@ -88,7 +91,8 @@ public class Interfaz extends javax.swing.JFrame {
         Salirbtn = new javax.swing.JButton();
         participantesbtn = new javax.swing.JButton();
         Mensajebtn = new javax.swing.JButton();
-        usuariotxt = new javax.swing.JTextField();
+        usuariootxt = new javax.swing.JTextField();
+        puertolbl = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,7 +111,6 @@ public class Interfaz extends javax.swing.JFrame {
         historialMentxt.setColumns(20);
         historialMentxt.setRows(5);
         jScrollPane2.setViewportView(historialMentxt);
-        historialMentxt.setText(miDriver.cargar(puerto));
 
         mensajetxt.setColumns(20);
         mensajetxt.setRows(5);
@@ -143,17 +146,6 @@ public class Interfaz extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel2))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(175, 175, 175)
@@ -171,16 +163,32 @@ public class Interfaz extends javax.swing.JFrame {
                                 .addComponent(Salirbtn))
                             .addComponent(Enviarbtn)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(434, 434, 434)
-                        .addComponent(usuariotxt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel2)))))
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(puertolbl, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(usuariootxt, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usuariootxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(puertolbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
-                .addComponent(usuariotxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -220,7 +228,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void SalirbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirbtnActionPerformed
         // TODO add your handling code here:
-        
+       
         System.exit(0);
     }//GEN-LAST:event_SalirbtnActionPerformed
 
@@ -239,7 +247,7 @@ public class Interfaz extends javax.swing.JFrame {
        
         
         if(existe==true){
-             String mensaje = "USER: "+texto+"\n";
+             String mensaje = usuariootxt.getText()+": "+texto+"\n"+".";
                 historialMentxt.append(mensaje);
                 mensajetxt.setText(null);
             try {
@@ -258,6 +266,10 @@ public class Interfaz extends javax.swing.JFrame {
 
         // Método para escribir el mensaje en un archivo  ddd
     private void escribirMensajeEnArchivo(String mensaje) throws java.io.IOException {
+       
+          String elpuerto = puertolbl.getText();
+    String rutaProyecto = System.getProperty("user.dir");
+    String archivo= rutaProyecto+"\\src\\Doc\\"+elpuerto;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, true))) {
             writer.write(mensaje);
            
@@ -305,7 +317,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton Enviarbtn;
     private javax.swing.JButton Mensajebtn;
     private javax.swing.JButton Salirbtn;
-    private javax.swing.JTextArea historialMentxt;
+    public javax.swing.JTextArea historialMentxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -315,6 +327,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextArea mensajetxt;
     private javax.swing.JButton participantesbtn;
     private javax.swing.JList<String> participantestxt;
-    private javax.swing.JTextField usuariotxt;
+    public javax.swing.JTextField puertolbl;
+    public javax.swing.JTextField usuariootxt;
     // End of variables declaration//GEN-END:variables
 }

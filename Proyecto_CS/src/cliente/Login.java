@@ -48,7 +48,7 @@ public class Login extends javax.swing.JFrame {
         passtx = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        puertotxt = new javax.swing.JTextField();
+        puertootxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         nombretxtx = new javax.swing.JTextField();
@@ -61,7 +61,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setText("Puerto:");
 
-        puertotxt.setText(" ");
+        puertootxt.setText(" ");
 
         jButton1.setText("Iniciar Sesion");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +95,7 @@ public class Login extends javax.swing.JFrame {
                                 .addGap(15, 15, 15)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(passtx)
-                                    .addComponent(puertotxt, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                                    .addComponent(puertootxt, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                                     .addComponent(nombretxtx))))))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
@@ -115,7 +115,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(puertotxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(puertootxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(132, Short.MAX_VALUE))
@@ -144,18 +144,22 @@ public class Login extends javax.swing.JFrame {
        
       
        
-       nombretxtx.getText();
+       /*nombretxtx.getText();
        puertotxt.getText();
-       passtx.getText();
+       passtx.getText(); */
        
        usuario  = nombretxtx.getText();
-       puerto  = Integer.parseInt(puertotxt.getText());
+       puerto  = Integer.parseInt(puertootxt.getText());
        pass  = passtx.getText();
        
         Driver miDriver = new Driver(pass,puerto);
-            
-       interfaz.setVisible(true);
-      
+        String perto = ""+puerto;
+        String mensaje=miDriver.cargar(perto);
+        System.out.println(mensaje);
+        interfaz.historialMentxt.setText(mensaje); 
+        interfaz.usuariootxt.setText(usuario);
+         interfaz.puertolbl.setText(perto);
+       interfaz.setVisible(true);      
        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -203,6 +207,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nombretxtx;
     private javax.swing.JTextField passtx;
-    private javax.swing.JTextField puertotxt;
+    public javax.swing.JTextField puertootxt;
     // End of variables declaration//GEN-END:variables
 }

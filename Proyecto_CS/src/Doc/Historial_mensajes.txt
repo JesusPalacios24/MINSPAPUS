@@ -12,3 +12,5 @@ USER: HOLA
 USER: ME LLAMO JAIME
 USER: SACAR Y MAS
 USER: NOSE
+USER: Buenos dias soy Hola
+USER: jijija
