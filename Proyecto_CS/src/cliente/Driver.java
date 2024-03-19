@@ -103,7 +103,7 @@ public class Driver {
                 // Procesar la línea (en este ejemplo, simplemente imprimirla)
                 System.out.println(linea);
                 if(linea.equals(".")){
-                    mens=mens+"\n";
+                    mens=mens+"/n";
                 }else{
                     mens=mens+linea;
                 }
