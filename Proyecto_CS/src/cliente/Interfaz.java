@@ -81,8 +81,6 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        participantestxt = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         historialMentxt = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -93,19 +91,14 @@ public class Interfaz extends javax.swing.JFrame {
         Mensajebtn = new javax.swing.JButton();
         usuariootxt = new javax.swing.JTextField();
         puertolbl = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        participantestxt = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Participantes:");
 
         jLabel2.setText("Mensajes");
-
-        participantestxt.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(participantestxt);
 
         historialMentxt.setEditable(false);
         historialMentxt.setColumns(20);
@@ -131,6 +124,11 @@ public class Interfaz extends javax.swing.JFrame {
         });
 
         participantesbtn.setText("Lista  Participantes");
+        participantesbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                participantesbtnActionPerformed(evt);
+            }
+        });
 
         Mensajebtn.setText("Lista  Mensaje");
         Mensajebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +140,10 @@ public class Interfaz extends javax.swing.JFrame {
         usuariootxt.setEditable(false);
 
         puertolbl.setEditable(false);
+
+        participantestxt.setColumns(20);
+        participantestxt.setRows(5);
+        jScrollPane4.setViewportView(participantestxt);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -170,8 +172,8 @@ public class Interfaz extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -198,8 +200,8 @@ public class Interfaz extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -232,15 +234,17 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void SalirbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirbtnActionPerformed
         // TODO add your handling code here:
-       
+        
+        
         System.exit(0);
     }//GEN-LAST:event_SalirbtnActionPerformed
 
     private void MensajebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MensajebtnActionPerformed
-        // TODO add your handling code here:
+        Driver miDriver = new Driver("localhost",Integer.parseInt(puertolbl.getText()));
+         String perto = puertolbl.getText();
+        String mensaje=miDriver.cargar(perto);
         
-        
-        
+        historialMentxt.setText(mensaje);      
     }//GEN-LAST:event_MensajebtnActionPerformed
 
     private void EnviarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarbtnActionPerformed
@@ -268,6 +272,14 @@ public class Interfaz extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_EnviarbtnActionPerformed
+
+    private void participantesbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_participantesbtnActionPerformed
+      Driver miDriver = new Driver("localhost",Integer.parseInt(puertolbl.getText()));
+        String mensajito;
+        mensajito = miDriver.Lista(usuariootxt.getText());
+        participantestxt.setText(mensajito);
+       
+    }//GEN-LAST:event_participantesbtnActionPerformed
 
         // Método para escribir el mensaje en un archivo  ddd
     private void escribirMensajeEnArchivo(String mensaje) throws java.io.IOException {
@@ -326,12 +338,12 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea mensajetxt;
     private javax.swing.JButton participantesbtn;
-    private javax.swing.JList<String> participantestxt;
+    public javax.swing.JTextArea participantestxt;
     public javax.swing.JTextField puertolbl;
     public javax.swing.JTextField usuariootxt;
     // End of variables declaration//GEN-END:variables
