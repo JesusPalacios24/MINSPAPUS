@@ -17,23 +17,16 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    
-   public String usuario ="Manuel";
-   public int puerto;
-   public String pass;
-   
-    
+    public String usuario = "Manuel";
+    public int puerto;
+    public String pass;
+
     public Login() {
         initComponents();
         this.setLocationRelativeTo(this);
-        
-        
-        
-        
+
     }
 
-
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -146,28 +139,25 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-       Interfaz interfaz = new Interfaz();
-       
-      
-       
-       /*nombretxtx.getText();
+
+        Interfaz interfaz = new Interfaz();
+
+        /*nombretxtx.getText();
        puertotxt.getText();
        passtx.getText(); */
-       
-       usuario  = nombretxtx.getText();
-       puerto  = Integer.parseInt(puertootxt.getText());
-       pass  = passtx.getText();
-       
-        Driver miDriver = new Driver(pass,puerto);
-        String perto = ""+puerto;
-        String mensaje=miDriver.cargar(perto);
+        usuario = nombretxtx.getText();
+        puerto = Integer.parseInt(puertootxt.getText());
+        pass = passtx.getText();
+
+        Driver miDriver = new Driver(pass, puerto);
+        String perto = "" + puerto;
+        String mensaje = miDriver.cargar(perto);
         System.out.println(mensaje);
-        interfaz.historialMentxt.setText(mensaje); 
+        interfaz.historialMentxt.setText(mensaje);
         interfaz.usuariootxt.setText(usuario);
-         interfaz.puertolbl.setText(perto);
-       interfaz.setVisible(true);      
-       this.setVisible(false);
+        interfaz.puertolbl.setText(perto);
+        interfaz.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void puertootxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puertootxtActionPerformed

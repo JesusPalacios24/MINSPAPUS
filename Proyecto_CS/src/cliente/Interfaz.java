@@ -234,6 +234,47 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void SalirbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirbtnActionPerformed
         // TODO add your handling code here:
+        // Obtener el nombre de usuario
+    String nombreUsuario = usuariootxt.getText();
+    
+    // Ruta del archivo "historial de mensajes"
+    String rutaArchivo = System.getProperty("user.dir") + "\\src\\Doc\\Historial_mensajes.txt";
+    
+    try {
+        // Crear un nuevo archivo temporal para almacenar los nombres de usuario
+        File archivoTemporal = new File("temporal.txt");
+        FileWriter fw = new FileWriter(archivoTemporal);
+        BufferedWriter bw = new BufferedWriter(fw);
+        
+        // Leer el archivo original línea por línea
+        FileReader fr = new FileReader(rutaArchivo);
+        BufferedReader br = new BufferedReader(fr);
+        String linea;
+        
+        while ((linea = br.readLine()) != null) {
+            // Si la línea no contiene el nombre de usuario, escribir la línea en el archivo temporal
+            if (!linea.trim().equals(nombreUsuario)) {
+                bw.write(linea);
+                bw.newLine();
+            }
+        }
+        
+        // Cerrar los flujos de lectura y escritura
+        br.close();
+        bw.close();
+        
+        // Eliminar el archivo original
+        File archivoOriginal = new File(rutaArchivo);
+        archivoOriginal.delete();
+        
+        // Renombrar el archivo temporal al nombre original
+        archivoTemporal.renameTo(archivoOriginal);
+        
+    } catch (IOException ex) {
+        // Manejar cualquier excepción de IO
+        ex.printStackTrace();
+    }
+        
         
         
         System.exit(0);
@@ -278,6 +319,9 @@ public class Interfaz extends javax.swing.JFrame {
         String mensajito;
         mensajito = miDriver.Lista(usuariootxt.getText());
         participantestxt.setText(mensajito);
+        
+        
+        
        
     }//GEN-LAST:event_participantesbtnActionPerformed
 

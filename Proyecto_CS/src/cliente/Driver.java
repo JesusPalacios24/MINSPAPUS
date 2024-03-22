@@ -58,20 +58,40 @@ public class Driver {
             String linea;
             
             // Leer cada línea del archivo hasta que se alcance el final
+            boolean usuarioRepetido = false;
             while ((linea = br.readLine()) != null) {
                 // Procesar la línea (en este ejemplo, simplemente imprimirla)
                 System.out.println(linea);
                 
-                    mensaj=mensaj+linea+"\n";                              
+                    mensaj=mensaj+linea+"\n";    
+            if (linea.equals(usuario)) {
+                usuarioRepetido = true;
+            }
+            
             }
            
             // Cerrar el BufferedReader y el FileReader
             br.close();
             fr.close();
+            
+            if (!usuarioRepetido) {
+            // Agregar el usuario al mensaje solo si no está repetido
+            mensaj = mensaj + usuario + "\n";
+            
+            // Escribir el mensaje actualizado al archivo
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, true))) {
+                writer.write(usuario);
+                writer.newLine();
+            } catch (Exception e) {
+                // Manejar cualquier error de escritura en el archivo
+                System.out.println(e.getMessage());
+            }
+        }
+            
             }catch(Exception e){
                 System.out.println("Error: "+e.getMessage());
             }
-            
+      /*      
          if(mensaj.contains(usuario)){
              System.out.println("Usuario ya registrado");
          }else{
@@ -87,7 +107,7 @@ public class Driver {
             // Manejar cualquier error de escritura en el archivo
             System.out.println(e.getMessage());
         }
-            
+            */
         
             return mensaj;
          
