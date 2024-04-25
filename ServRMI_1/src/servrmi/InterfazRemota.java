@@ -5,6 +5,6 @@ import java.rmi.RemoteException;
 
 public interface InterfazRemota extends Remote {
   
-    public int suma(int n, int m) throws RemoteException;        
+    public int suma(int n,int m) throws RemoteException;        
     
 }

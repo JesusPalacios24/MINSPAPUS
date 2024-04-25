@@ -10,7 +10,6 @@ public class claseRemota extends UnicastRemoteObject implements InterfazRemota {
     }
     @Override
     public int suma(int n, int m) throws RemoteException{
-        int s=n+m;
-        return s;
+        return n + m;
     }
 }

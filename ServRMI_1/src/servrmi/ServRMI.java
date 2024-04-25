@@ -13,7 +13,7 @@ public class ServRMI {
             System.out.println("Objeto remoto creado");
         Registry elRegistro = LocateRegistry.createRegistry(3000);
         System.out.println("Registro temporal creado");
-        elRegistro.rebind("suma", ObjetoRemoto);
+        elRegistro.rebind("saludador", ObjetoRemoto);
         System.out.println("Objeto registrado y listo para usarse");   
             
         }catch(RemoteException ex){
