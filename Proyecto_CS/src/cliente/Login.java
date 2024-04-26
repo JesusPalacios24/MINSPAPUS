@@ -6,7 +6,11 @@ package cliente;
 
 import javax.swing.JFrame;
 import cliente.Interfaz;
+import java.awt.Image;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -17,23 +21,31 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    
-   public String usuario ="Manuel";
-   public int puerto;
-   public String pass;
-   
-    
+    public String usuario = "Manuel";
+    public int puerto;
+    public String pass;
+
     public Login() {
         initComponents();
         this.setLocationRelativeTo(this);
         
+        SetImageLable(jLabel4,"src/Ima/AmiChatLogo.png");
+        
+        ImageIcon icon = new ImageIcon("src/Ima/3.png"); // Ruta del icono
+        setIconImage(icon.getImage());
         
         
-        
+
     }
-
-
     
+    
+    private void SetImageLable(JLabel name, String root){
+        ImageIcon image = new ImageIcon (root);
+        Icon icon= new ImageIcon(
+        image.getImage().getScaledInstance(name.getWidth(), name.getHeight(), Image.SCALE_SMOOTH));
+        name.setIcon(icon);
+        this.repaint();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,13 +67,24 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(202, 193, 245));
+        jPanel1.setForeground(new java.awt.Color(141, 134, 172));
+        jPanel1.setToolTipText("");
+
+        jLabel1.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(82, 77, 105));
         jLabel1.setText("Direccion:");
 
         passtx.setEditable(false);
+        passtx.setBackground(new java.awt.Color(150, 146, 168));
         passtx.setText("localhost");
 
+        jLabel2.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(82, 77, 105));
         jLabel2.setText("Nombre:");
 
+        jLabel3.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(82, 77, 105));
         jLabel3.setText("Puerto:");
 
         puertootxt.addActionListener(new java.awt.event.ActionListener() {
@@ -70,14 +93,18 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(204, 204, 255));
+        jButton1.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(82, 77, 105));
         jButton1.setText("Iniciar Sesion");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ima/USER.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ima/AmiChatLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,13 +113,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
+                        .addGap(51, 51, 51)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -101,17 +122,22 @@ public class Login extends javax.swing.JFrame {
                                     .addComponent(jLabel3))
                                 .addGap(15, 15, 15)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(passtx)
-                                    .addComponent(puertootxt, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                                    .addComponent(nombretxtx))))))
-                .addContainerGap(82, Short.MAX_VALUE))
+                                    .addComponent(puertootxt)
+                                    .addComponent(passtx, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                                    .addComponent(nombretxtx)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 298, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nombretxtx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -125,7 +151,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(puertootxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,9 +162,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -146,28 +170,25 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-       Interfaz interfaz = new Interfaz();
-       
-      
-       
-       /*nombretxtx.getText();
+
+        Interfaz interfaz = new Interfaz();
+
+        /*nombretxtx.getText();
        puertotxt.getText();
        passtx.getText(); */
-       
-       usuario  = nombretxtx.getText();
-       puerto  = Integer.parseInt(puertootxt.getText());
-       pass  = passtx.getText();
-       
-        Driver miDriver = new Driver(pass,puerto);
-        String perto = ""+puerto;
-        String mensaje=miDriver.cargar(perto);
+        usuario = nombretxtx.getText();
+        puerto = Integer.parseInt(puertootxt.getText());
+        pass = passtx.getText();
+
+        Driver miDriver = new Driver(pass, puerto);
+        String perto = "" + puerto;
+        String mensaje = miDriver.cargar(perto);
         System.out.println(mensaje);
-        interfaz.historialMentxt.setText(mensaje); 
+        interfaz.historialMentxt.setText(mensaje);
         interfaz.usuariootxt.setText(usuario);
-         interfaz.puertolbl.setText(perto);
-       interfaz.setVisible(true);      
-       this.setVisible(false);
+        interfaz.puertolbl.setText(perto);
+        interfaz.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void puertootxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puertootxtActionPerformed

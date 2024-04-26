@@ -4,6 +4,7 @@
  */
 package cliente;
 
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,6 +14,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,6 +38,13 @@ public class Interfaz extends javax.swing.JFrame {
     public Interfaz() {
         initComponents();
             this.setLocationRelativeTo(this);
+            
+            ImageIcon icon = new ImageIcon("src/Ima/2.png"); // Ruta del icono
+        setIconImage(icon.getImage());
+        
+         SetImageButton(Enviarbtn, "src/Ima/4.png");
+         SetImageButton(Salirbtn, "src/Ima/5.png");
+            
   String elpuerto = puertolbl.getText();
     String rutaProyecto = System.getProperty("user.dir");
     String archivo= rutaProyecto+"\\src\\Doc\\"+elpuerto;
@@ -68,6 +80,19 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     
+        private void SetImageButton(JButton button, String root) {
+        ImageIcon image = new ImageIcon(root);
+        Icon icon = new ImageIcon(image.getImage().getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_SMOOTH));
+        button.setIcon(icon);
+       
+        
+        button.setBorderPainted(false);
+        button.setContentAreaFilled(false);
+        button.setFocusPainted(false);
+        button.setOpaque(false);
+        this.repaint();
+    }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,33 +121,51 @@ public class Interfaz extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(202, 193, 245));
+
+        jLabel1.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(82, 77, 105));
         jLabel1.setText("Participantes:");
 
+        jLabel2.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(82, 77, 105));
         jLabel2.setText("Mensajes");
 
         historialMentxt.setEditable(false);
+        historialMentxt.setBackground(new java.awt.Color(213, 205, 250));
         historialMentxt.setColumns(20);
+        historialMentxt.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        historialMentxt.setForeground(new java.awt.Color(82, 77, 105));
         historialMentxt.setRows(5);
+        historialMentxt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jScrollPane2.setViewportView(historialMentxt);
 
         mensajetxt.setColumns(20);
         mensajetxt.setRows(5);
         jScrollPane3.setViewportView(mensajetxt);
 
-        Enviarbtn.setText("Enviar");
+        Enviarbtn.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        Enviarbtn.setForeground(new java.awt.Color(82, 77, 105));
+        Enviarbtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Enviarbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Enviarbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EnviarbtnActionPerformed(evt);
             }
         });
 
-        Salirbtn.setText("Salir");
+        Salirbtn.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        Salirbtn.setForeground(new java.awt.Color(82, 77, 105));
+        Salirbtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Salirbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Salirbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirbtnActionPerformed(evt);
             }
         });
 
+        participantesbtn.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        participantesbtn.setForeground(new java.awt.Color(82, 77, 105));
         participantesbtn.setText("Lista  Participantes");
         participantesbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,6 +173,8 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
+        Mensajebtn.setFont(new java.awt.Font("Javanese Text", 1, 14)); // NOI18N
+        Mensajebtn.setForeground(new java.awt.Color(82, 77, 105));
         Mensajebtn.setText("Lista  Mensaje");
         Mensajebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,11 +183,22 @@ public class Interfaz extends javax.swing.JFrame {
         });
 
         usuariootxt.setEditable(false);
+        usuariootxt.setBackground(new java.awt.Color(175, 167, 214));
+        usuariootxt.setForeground(new java.awt.Color(110, 107, 126));
+        usuariootxt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         puertolbl.setEditable(false);
+        puertolbl.setBackground(new java.awt.Color(175, 167, 214));
+        puertolbl.setForeground(new java.awt.Color(110, 107, 126));
+        puertolbl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        participantestxt.setEditable(false);
+        participantestxt.setBackground(new java.awt.Color(213, 205, 250));
         participantestxt.setColumns(20);
+        participantestxt.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        participantestxt.setForeground(new java.awt.Color(82, 77, 105));
         participantestxt.setRows(5);
+        participantestxt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jScrollPane4.setViewportView(participantestxt);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -151,25 +207,24 @@ public class Interfaz extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(175, 175, 175)
-                                .addComponent(participantesbtn)
-                                .addGap(71, 71, 71)
-                                .addComponent(Mensajebtn)
-                                .addGap(29, 29, 29))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(Salirbtn))
-                            .addComponent(Enviarbtn)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(participantesbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Mensajebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Enviarbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Salirbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,14 +233,13 @@ public class Interfaz extends javax.swing.JFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(jLabel2)))))
-                .addContainerGap(39, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(puertolbl, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(usuariootxt, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                                .addComponent(jLabel2)))
+                        .addContainerGap(52, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(puertolbl, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(usuariootxt, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,22 +253,22 @@ public class Interfaz extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                        .addComponent(Enviarbtn)
-                        .addGap(26, 26, 26)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Salirbtn)
-                    .addComponent(participantesbtn)
-                    .addComponent(Mensajebtn))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Enviarbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Salirbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(participantesbtn)
+                        .addComponent(Mensajebtn)))
                 .addGap(35, 35, 35))
         );
 
@@ -234,6 +288,47 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void SalirbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirbtnActionPerformed
         // TODO add your handling code here:
+        // Obtener el nombre de usuario
+    String nombreUsuario = usuariootxt.getText();
+    
+    // Ruta del archivo "historial de mensajes"
+    String rutaArchivo = System.getProperty("user.dir") + "\\src\\Doc\\Historial_mensajes.txt";
+    
+    try {
+        // Crear un nuevo archivo temporal para almacenar los nombres de usuario
+        File archivoTemporal = new File("temporal.txt");
+        FileWriter fw = new FileWriter(archivoTemporal);
+        BufferedWriter bw = new BufferedWriter(fw);
+        
+        // Leer el archivo original línea por línea
+        FileReader fr = new FileReader(rutaArchivo);
+        BufferedReader br = new BufferedReader(fr);
+        String linea;
+        
+        while ((linea = br.readLine()) != null) {
+            // Si la línea no contiene el nombre de usuario, escribir la línea en el archivo temporal
+            if (!linea.trim().equals(nombreUsuario)) {
+                bw.write(linea);
+                bw.newLine();
+            }
+        }
+        
+        // Cerrar los flujos de lectura y escritura
+        br.close();
+        bw.close();
+        
+        // Eliminar el archivo original
+        File archivoOriginal = new File(rutaArchivo);
+        archivoOriginal.delete();
+        
+        // Renombrar el archivo temporal al nombre original
+        archivoTemporal.renameTo(archivoOriginal);
+        
+    } catch (IOException ex) {
+        // Manejar cualquier excepción de IO
+        ex.printStackTrace();
+    }
+        
         
         
         System.exit(0);
@@ -278,6 +373,9 @@ public class Interfaz extends javax.swing.JFrame {
         String mensajito;
         mensajito = miDriver.Lista(usuariootxt.getText());
         participantestxt.setText(mensajito);
+        
+        
+        
        
     }//GEN-LAST:event_participantesbtnActionPerformed
 
